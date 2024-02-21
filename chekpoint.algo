@@ -1,0 +1,51 @@
+The length of the sentence (the number of characters).
+The number of words in the sentence (assuming that the words are separated by a single space).
+The number of vowels in the sentence.
+
+
+ALGORITHM AnalyzeSentence
+
+    sentence: STRING
+    length: INTEGER
+    numWords: INTEGER
+    numVowels: INTEGER
+    currentChar: CHARACTER
+
+BEGIN
+   
+    length := 0
+    numWords := 0
+    numVowels := 0
+    
+    // Read the sentence input
+    Read(sentence)
+    
+    // Loop through each character in the sentence
+    FOR i FROM 1 TO LENGTH(sentence) DO
+        currentChar := SUBSTRING(sentence, i, 1) // Get the current character
+        
+        // Increment the length counter
+        length := length + 1
+        
+        // Check if the current character is a space
+        IF currentChar = ' ' THEN
+            // Increment the word counter
+            numWords := numWords + 1
+        END_IF
+        
+        // Check if the current character is a vowel (assuming English vowels)
+        IF currentChar = 'a' OR currentChar = 'e' OR currentChar = 'i' OR currentChar = 'o' OR currentChar = 'u' THEN
+            // Increment the vowel counter
+            numVowels := numVowels + 1
+        END_IF
+    END_FOR
+    
+    // Increment word counter to account for the last word
+    numWords := numWords + 1
+    
+    // Output the results
+    Write("Length of the sentence:", length)
+    Write("Number of words in the sentence:", numWords)
+    Write("Number of vowels in the sentence:", numVowels)
+    
+END
